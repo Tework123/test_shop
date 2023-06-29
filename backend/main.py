@@ -1,17 +1,17 @@
+import time
+from datetime import datetime
+
 from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'])
-def index():
-    a = []
-    for i in range(100):
-        a.append(str(i))
+@app.route('/data')
+def get_time():
+    time = datetime.now()
 
-    response = jsonify({'data': a})
-    response.status_code = 200
-    return response
+    return {'Name': 'geek',
+            'Time': time}
 
 
 if __name__ == '__main__':

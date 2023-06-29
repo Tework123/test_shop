@@ -5,29 +5,30 @@ import './App.css';
 function App() {
 
 
-  const [message, setMessage] = useState(null);
-
+  const [data, setdata] = useState({
+  Name: "",
+  Time: "",});
 
   useEffect(() => {
-    axios.get(``).then((response) => {
-      setMessage(response.data);
-    });
+    fetch("/data").then((res) =>
+      res.json().then((data) => {
+      setdata({
+      name: data.Name,
+      time: data.Time,
+      })
+      },
+    ));
   }, []);
 
-  function createPost() {
-    axios
-      .post('/', {
-        message: 'suda naher'
-      })
-      .then((response) => {
-        setMessage(response.data);
-      });
-  }
 
   return (
     <div className="App">
-      {message}
-      <button onClick={createPost}>get message</button>
+        <header className='App-header'>
+          <h1> HELLO </h1>
+          {}
+          <p>{data.name}</p>
+          <p>{data.time}</p>
+        </header>
     </div>
   );
 }
