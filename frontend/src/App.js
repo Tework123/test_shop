@@ -3,34 +3,25 @@ import axios from 'axios'
 import './App.css';
 
 function App() {
-
-
-  const [data, setdata] = useState({
-  Name: "",
-  Time: "",});
+  const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    fetch("/data").then((res) =>
-      res.json().then((data) => {
-      setdata({
-      name: data.Name,
-      time: data.Time,
-      })
-      },
-    ));
+    fetch('/time').then(res => res.json()).then(data => {
+      setCurrentTime(data.time);
+    });
   }, []);
-
 
   return (
     <div className="App">
-        <header className='App-header'>
-          <h1> HELLO </h1>
-          {}
-          <p>{data.name}</p>
-          <p>{data.time}</p>
-        </header>
+      <header className="App-header">
+
+        ... no changes in this part ...
+
+        <p>The current time is {currentTime}.</p>
+      </header>
     </div>
   );
 }
+
 
 export default App;

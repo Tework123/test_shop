@@ -6,13 +6,8 @@ from flask import Flask, render_template, jsonify
 app = Flask(__name__)
 
 
-@app.route('/data')
-def get_time():
+@app.route('/time')
+def get_current_time():
     time = datetime.now()
 
-    return {'Name': 'geek',
-            'Time': time}
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return {'time': time}
