@@ -8,7 +8,8 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(``).then((response) => {
+    axios.get(`http://localhost:4444`).then((response) => {
+      console.log(response);
       setMessage(response.data);
     });
   }, []);
